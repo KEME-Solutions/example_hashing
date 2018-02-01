@@ -1,0 +1,28 @@
+<html>
+  <head>
+  </head>
+
+<body>
+
+<textarea id="input" style="width: 100%; height: 300px;"></textarea>
+<input type="text" id="hash" style="width: 100%">
+
+<script src="sjcl.js"></script>
+
+<script>
+  function doHash() {
+    var input = document.getElementById('input').value;
+
+    var bitArray = sjcl.hash.sha256.hash(input);  
+    var digest_sha256 = sjcl.codec.hex.fromBits(bitArray);
+
+    document.getElementById('hash').value = digest_sha256;
+
+  }
+
+  doHash();
+
+  document.getElementById('input').onkeyup = doHash;
+</script>
+</body>
+</html>
